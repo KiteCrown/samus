@@ -1,38 +1,207 @@
 namespace SpriteKind {
     export const energy = SpriteKind.create()
 }
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
-    game.gameOver(false)
-})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
-        mySprite.vy = -230
-    } else if (mySprite.isHittingTile(CollisionDirection.Left)) {
-        mySprite.vy = -100
-    } else if (mySprite.isHittingTile(CollisionDirection.Right)) {
-        mySprite.vy = -100
+        mySprite.vy = -190
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
+    game.gameOver(false)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (characterAnimations.matchesRule(mySprite, characterAnimations.rule(Predicate.FacingRight, Predicate.HittingWallDown))) {
+    if (characterAnimations.matchesRule(mySprite, characterAnimations.rule(Predicate.FacingRight))) {
         projectile = sprites.createProjectileFromSprite(img`
-            . 8 8 8 8 . 
-            8 9 9 9 9 8 
-            8 9 9 9 9 8 
-            8 9 9 9 9 8 
-            8 9 9 9 9 8 
-            . 8 8 8 8 . 
-            `, mySprite, 160, 0)
-    } else if (characterAnimations.matchesRule(mySprite, characterAnimations.rule(Predicate.FacingLeft, Predicate.HittingWallDown))) {
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            .............c..........
+            .............ccccccc....
+            .............cddddd.....
+            .............ccccc......
+            .............c..........
+            ........................
+            `, mySprite, 0, 0)
+    } else if (characterAnimations.matchesRule(mySprite, characterAnimations.rule(Predicate.FacingLeft))) {
         projectile = sprites.createProjectileFromSprite(img`
-            . 8 8 8 8 . 
-            8 9 9 9 9 8 
-            8 9 9 9 9 8 
-            8 9 9 9 9 8 
-            8 9 9 9 9 8 
-            . 8 8 8 8 . 
-            `, mySprite, -160, 0)
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ........................
+            ..........c.............
+            ....ccccccc.............
+            .....dddddc.............
+            ......ccccc.............
+            ..........c.............
+            ........................
+            `, mySprite, 0, 0)
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
+    scene.setBackgroundImage(img`
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffcfffffffffffffffffffffffffffffcccccfffffffffffffffffffffffffffffccfffffffffffffffffffffffffffffffffffcfccfffffffffffffffffffffffffffffccccffffffffffffffffff
+        ffffccccfffccfffffcccccccccffffffccccccccffffffcccccccccfffffcccffffcccfffffccccccccffffffcccccccccfffffcccccccccffffffcccccccccfffffcccccccccfffffcccccccccffff
+        ffccccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffcccccffffcccfffcccccccccccffcccccccccccccffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        ffffffccccccccffffffcccccccccffcffcccccccccffffffccccccccffffffcccccccccffffffccccccccffcfffcccccccccffcffcccccccccffffffccccccccfffcffccccccccfffcffcccccccccff
+        ffffffccccccccffffffcccccccffffcffcccccccccffffffccccccccffffffcccccccccffffffccccccccffcfffcccccccccffcffcccccccccffffffccccccccfffcffccccccccfffcffcccccccccff
+        fffcccccccccccfffccccccccccffffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffcccccccccccccffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        fffcccccccccccfffccccccccccffffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffffcccccccccccffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        fffcccccccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccffccccccccccccfffffffccccccccffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        fffcccccccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccffccccccccccccffffffffcccccccffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        fffccccccccffcfffccccffcccfccfffccccccccffcffffccccccccfcfffcccccccccffcffcccccccccffcffcffffcccccccfffccccffcccffcfffccccccccffcfffccccffcccfffffcccccccccffcff
+        ffffcccccccfffffffcffffccfffcffffcccccccfffffffcccccccfffffffcffccccffffffffcccccccfffffffccccccccfffffffffffcccfffffffcccccccfffffffcffffccffffffffccffcccfffff
+        ffffccccccccfffffffffffcccfffffffccccccccffffffcccccccfffffffcfffccccfffffffccccccccffffffccccccccfffffffffffccccffffffccccccccfffffffffffcccfffffffccfffccfffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        fffcffffffcccccccccffffffcccccccccfffffcccccccccffffffccccccccffffffccccfffcffffffcccccccccffffffccccccccffffffcccccccccffffffccccccccffffffccccfffcffffffccccff
+        ffccccffffccccccccccffffccccccccccffffcccccccccccffffccccccccccffffccccccfffcffffcccccccccccfffcccccccccccffffccccccccccffffcccccccccccffffcccccffffcffffccccccf
+        ccccccffffffcccccccccffffffccccccccffffffcccfffccfffcfccccccccccffcffccccfffccffffffcccccccccfffffcccccccccffcfffccccccccffccffccccccccfffcffccccfffccffffffcccc
+        ccccccffffffcccccccffffcfffccccccccffffffcccffffffffcffcccccccccffcffcccccccccffffffcccccccccffffffccccccccffcfffcccccccccffcffccccccccfffcffcccccccccffffffcccc
+        ccccccfffcffcccccccffffcffcccccccccfffcffccccfffffffccccccccccccffcffcccccccccfffcfccccccccccffcffcccccccccffccfccccccccccfccffccccccccfffcffcccccccccfffffccccc
+        ccccccfffccccccccccffffccccccccccccfffccccccccffffffccccccccccccffccccccccccccffffcccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccfffccccccccccccffccccccccccccffffccccccccccfffcccccccccccfffccccccccccccffffcccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccfffccccccccccccffccccccccccccffffcccccccccccffcccccccccccfffccccccccccccffcfcccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccfffccccccccccccffccccccccccccffffccccccccccfffccccffcccccfffccccccccccccffcccccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        cccffffffccccccccfffcffcccccccccffffffcccccccccfffffccccfffcfffffffccccccccfffffcccccccccffffffccccccccfffffffccccccccffffffcccccccccffffffccccccccffcfffccccccc
+        cccfffffffcfffcccffffffffcccccccfffffffccccccccfffffffffffcccfffffffcccccccfffffffcccccccfffffffffffcccffffffffcccccccfffffffffffccccfffffffccfffccfffffffccfffc
+        ffffffffffcffffffffffffffffffffffffffffffcfcccccffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcccfcffffffffffffffffffffffffffffffcffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffccccfffccffffffccccccccffffffcccccccccfffffcccccccccfffffcccccccccffffffccccfffffffffffccccccccffffffcccccccccfffffcccccccccfffffcccccccccfffffcccccccccffff
+        fffccccccfcccffffccccccccccfffffcccccccccccfffccccccccccfffffccccccccccfffccccccffffcffffccccccccccfffffccccccccccffffccccccccccfffffcccccccccccffcccccccccccfff
+        fffcccccccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccffcccccccfffccffccccccccccccfffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccff
+        ffcfffccccccccffffffcccccccccffcffcccccccccffffffccccccccffffffcccccccccffcfffccccccccffcfffccccccccffffffcccccccccffffffccccccccfffcffcccccccccffcffcccccccccff
+        ffccfcccccccccffffffcccccccffffcffcccccccccffffffccccccccffffffcccccccccffcffcccccccccffcfffccccccccffffffcccccccccffffffccccccccfffcffcccccccccffcffcccccccccff
+        ffccccccccccccfffccccccccccffffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccff
+        ffccccccccccccfffccccccccccffffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        ffccccccccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        fffcccccccccccfffccccffccccccffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        fffccccccccffffffccccffccfffcffcccccccccffcfffccccccccffffffcccccccccfffffcccccccccfffffcccccccccffffffcccccccccffcfffccccccccffffffccccffccffffffcccccccccfffff
+        ffffccccccccffffffffffcccccffffffccccccccffffffcccccccccfffffcccccccccffffffccccccccffffffcccccccccfffffffffcccccffffffcccccccccfffffcffccccccffffffccfffcccffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        fffffffffffffffffffffffffffffffffffffffffffcccfffffffffffffffcffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffccccccffffffffffffffffffffffffff
+        ffcccfffffcccccccccfffffccccccccccfffffcccccccccfffffccccccccccffffcccccffffffffffcccccccccfffffccccccccccffffccccccccccfffffcccccccccfffffcccccccccfffffcccccff
+        ccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccfffccfffcccccccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccffffffcccccccccffcfffccccccccffffffccccccccfffcffcccccccccfffffccccfffccffffffcccccccccffffffccccccccffcfffccccccccffffffccccccccfffcffcccccccccffffffcccc
+        ccccccffffffcccccccffffcfffccccccccffffffcccccccffffcffcccccccccffcffcccccccccffffffcccccccccffffffccccccccffcfffccccccccffffffccccccccfffcffcccccccccffffffcccc
+        ccccccfffccccccccccffffccccccccccccfffccccccccccffffccccccccccccffccccccccccccfffccccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccfffccccccccccffffccccccccccccfffccccccccccffffccccccccccccffccccccccccccffffcccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccffccccccccccccffffcccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccffccccccccccccfffccccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        cccffffffccccffcccfccffcccccccccfffffffcccccccffffffcccccccccffffffccccccccffffffcccccccccffcffccccffcccffcffcccccccccffffffcccccccccfffffcccccccccffcfffccccccc
+        cccfffffffccfffcccffcffffcccccccfffffffcccccccfffffffcccccccfffffffccccccccfffffffcccccccfffffffccffffcffffffffcccccccfffffffcffcccccffffffcccffcccfffffffcccfcc
+        cccfffffffffffcccccffffffcccccccfffffffcccccccffffffffcccccccfffffffcccccccfffffffcccccccffffffffffffcccfffffffcccccccfffffffffffccccfffffffccfffccfffffffcccffc
+        fffffffffffffffcfcfffffffffffffffffffffffffffffcffffffffffffffffffffffffffffffffffcfccfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffcffffffffffffffffffffffffffffffffffcfccfffffffffffffffffffffffffffffffccfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcccccffffff
+        ffffccccfffccfffffcccccccccffffffccccccccffffffcccccccccfffffcccccccccffffffccccfffccfffffcccccccccffffffccccccccffffffcccccccccfffffcccccccccffffffccccccccffff
+        fffccccccccccccffccccccccccccffccccccccccccffccccccccccccfffccccccccccccfffcccccccffccffccccccccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccff
+        ffffffccccccccffffffcccccccccffcfffccccccccfffcffccccccccfffcffcccccccccffffffccccffccffcfffccccccccffffffcccccccccffcfffccccccccfffcffccccccccfffcffcccccccccff
+        ffffffccccccccffffffcccccccccffcffcccccccccffccffccccccccffffffcccccccccffcffcccccccccffcfffccccccccffffffcccccccccffffffccccccccfffcffccccccccfffcffcccccccccff
+        fffffcccccccccffffffcccccccffffcffcccccccccffffffccccccccfffcffcccccccccfffffcccccccccffcfffccccccccfffcffcccccccccfffffcccccccccfffcffccccccccfffccccccccccccff
+        fffcccccccccccfffccccccccccffffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccff
+        fffcccccccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        ffccccccccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccff
+        ffccccccccccccfffccccffccccccffccccccccccccffffccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccffccccccfffcccccccccccfffccccccccccccffccccccccccccff
+        ffcccccccccffffffccccffcccffcffcccccccccffcffffcccccccffffffccccccccfffcffcccccccccfffffcccccccccffffffccccffcccffcfffccccccccffffffcccccccccffcffcccccccccfffff
+        ffffcccccccffffffffffffcccfffffffcccccccfffffffcccccccfffffffcccccccffffffffcccccccfffffffcccccccffffffffcfffcccfffffffcccccccfffffffcfffccccfffffffccfffccfffff
+        ffffcccccccccfffffffffcccccffffffccccccccffffffcccccccccfffffcccccccccffffffccccccccffffffcccccccccfffffccfccccccffffffcccccccccfffffcfffcccccffffffccfffcccffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        fffcffffffcccccccccffffffcccccccccfffffcccccccccffffffccfffcccffffffccccffccffffffcccccccccffffffcccccccccfffffcccccccccffffffccccccccffffffccccccccffffffccccff
+        ffcccfffffcccccccccfffffccccccccccfffffcccccccccfffffcccffccccfffffcccccffccffffffcccccccccfffffcccccccccfffffccccccccccfffffcccccccccfffffcccccccccfffffcccccff
+        ccccccfffccccccccccccffccccccccccccfffcccccccffccfffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccffffffcccccccccffcfffccccccccffffffcccfffccffffffccccccccffffffcccccccccffffffcccccccccfffffcccccccccffcfffccccccccffffffccccccccfffcffcccccccccffffffcccc
+        ccccccfffcffcccccccffffcfffccccccccffffffccccfffffffcffcccccccccfffffcccccccccffffffcccccccccffccfcccccccccffcfffccccccccffffffccccccccfffcffcccccccccffffffcccc
+        ccccccfffccccccccccffffccccccccccccfffccccccccffffffccccccccccccffccccccccccccfffccccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccfffccccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        cccffffffccccccccfffcffcccccccccfffffffcccccccffffffcccccccccffcffcccccccccffffffccccccccfffcffccccfffcfffcffcccccccccffffffcccccccccfffffcccccccccffcfffccccccc
+        cccfffffffcfffcccffffffffcccccccfffffffcccccccfffffffcffcccccfffffffcccccccfffffffcccccccfffffffffffffcffffffffcccccccfffffffcffcccccfffffffccfffccfffffffccfffc
+        ccccffffffffffcccccffffffccccccccffffffcccccccccffffffffccccccffffffccccccccffffffcccccccccfffffffffcccccffffffcccccccccfffffcfffcccccffffffccfffcccffffffccfffc
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        fffffffffffffffffffffffffffffffffffffffffffffffffffcccccffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcccccfffffffffffffffffffffffffffffffff
+        ffffccccffcccfffffcccccccccfffffcccccccccffffffcccccccccfffffcccffccccfffffccccccccccfffffcccccccccfffffcccccccccffffffcccccccccfffffcccccccccfffffcccccccccffff
+        fffcccccccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        ffffffcccccccccfccffcccccccccffcffcccccccccffffffccccccccffffffcccccccccffffffccccccccffcfffccccccccffffffcccccccccffcffcccccccccfffcffccccccccfffcffcccccccccff
+        ffffffcccccccccffcffcccccccffffcffcccccccccffffffcccccccfffffffcccccccccffcfffcccccccccfcfffccccccccffffffcccccccccffcffcccccccccfffcffccccccccfffcffcccccccccff
+        fffccccccccccccfcccccccccccffffccccccccccccfffccccccccccffffccccccccccccffcccccccccccccfccccccccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccff
+        fffccccccccccccffccccccccccfffffcccccccccccfffccccccccccffffccccccccccccffccccccccccccffffccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        fffccccccccccccffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        fffcccccccccccfffccccccccccccfffcccccccccccffffccccccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        fffccccccccccffffccccffcccffcffcccccccccffcffffcccccccffffffccccffcccffcffcccccccccfffffcccccccccffffffcccccccccfccfffccccccccffcfffccccffccffffffcccccccccffcff
+        fffccccccccffffffccccffccfffcffcccccccccffcffcccccccccffffffccccfffcffffffcccccccccfffffcccccccccffffffcccccccccffcfffccccccccffffffcccfffccffffffcccccccccfffff
+        ffffccccccccfffffffffffcccfffffffccccccccffffffccccccccffffffcffffccccffffffccccccccffffffccccccccffffffffffcccccffffffccccccccfffffffffffcccffffffcccfffcccffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffcccfffffcccccccccffffffcccccccccfffffcccccccccfffffcccccccccffffffccccffccffffffcccccccccfffffcccccccccffffffcccccccccfffffcccccccccffffffcccfffffffffffccccff
+        ccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffcccccccffccfffccccccccccccffccccccccccccffccccccccccccfffcccccccccccfffcccccccfffccfffccccccc
+        ccccccffffffcccccccccffcfffccccccccfffcffccccccccffffffcccccccccfffffcccccffccffffffcccccccccfffffcccccccccffcfffccccccccffffffccccccccfffcffccccfffccffffffcccc
+        ccccccffffffcccccccffffffffccccccccffffffcccccccfffffffcccccccccfffffcccccccccffffffcccccccccffffffccccccccffcfffccccccccffffffccccccccfffcffcccccccccffffffcccc
+        ccccccfffccccccccccffffccccccccccccfffccccccccccffffccccccccccccffccccccccccccfffccccccccccccffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccfffccccccc
+        ccccccfffccccccccccffffccccccccccccfffccccccccccffffccccccccccccffccccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccccccccccffccccccccccccfffccccccc
+        ccccccfffccccccccccccffccccccccccccfffcccccccccccfffccccccccccccffccccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccccccccccffccccccccccccfffccccccc
+        ccccccfffccccccccccccffccccccccccccffffccccccccccfffccccccccccccffccccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccccccccccffccccccccccccfffccccccc
+        ccccccfffccccffccccccffccccccccccccffffccccccccccfffccccffccccccffccccccccccccfffccccccccccccffccccccccccccffccccccccccccfffccccffccccccffccccccccccccfffccccccc
+        cccffffffccccffccfffcffcccccccccffcfffccccccccffffffccccfffccffcffcccccccccffffffccccccccfffcffccccccccfffcffcccccccccffffffccccffcccffcffcccccccccffcfffccccccc
+        cccffffffffffffccffffffffcccccccfffffffcccccccffffffffffffcccfffffffcccccccfffffffcccccccfffffffffffcccffffffffcccccccffffffffffffcccfffffffccfffccfffffffccfffc
+        fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffcccffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+        fffffcccfffccffffffccccccccffffffccccccccffffffcccccccccfffffcccccccccffffffccccffccfffffffccccccccffffffccccccccffffffcccccccccfffffffcccccccffffffccccffccffff
+        fffcccccffcccfffffcccccccccfffffccccccccccffffccccccccccfffffcccccccccfffffcccccffffcffffccccccccccfffffccccccccccffffccccccccccfffffcccccccccfffffcccccffffffff
+        fffcccccccccccfffccccccccccccffccccccccccccfffcccccccffccfffccccccccccccffcccccccfffccffccccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffcccccccfffccff
+        ffffffccccccccffffffcccccccccffcffcccccccccffffffccccffccffffffcccccccccffcfffccccccccffcfffccccccccffffffcccccccccffffffccccccccffffffccccccccfffcffcccccccccff
+        ffffffccccccccfffffccccccccffffcffcccccccccffffffccccffffffffffcccccccccffcffcccccccccffccccccccccccfffcffcccccccccffffffccccccccfffcffccccccccfffcffcccccccccff
+        fffcccccccccccfffccccccccccffffccccccccccccfffccccccccffffffccccccccccccffccccccccccccffccccccccccccfffccccccccccccfffcccccccccccfffcccccccccccfffccccccccccccff
+        `)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+    tiles.loadMap(tiles.createSmallMap(tilemap`level24`))
+    tiles.placeOnRandomTile(mySprite, assets.tile`myTile10`)
+    for (let value of tiles.getTilesByType(assets.tile`myTile7`)) {
+        monster1 = sprites.create(img`
+            . . 9 9 9 . . . 
+            . 9 6 6 6 9 . . 
+            9 2 9 9 9 6 9 . 
+            9 9 6 6 9 9 6 9 
+            . 9 9 9 . . 9 . 
+            . . . . . . . . 
+            . . . . . . . . 
+            . . . . . . . . 
+            `, SpriteKind.Enemy)
+        monster1.ay = 500
+        monster1.vx = -30
+        tiles.setTileAt(value, assets.tile`transparency8`)
+        tiles.placeOnTile(monster1, value)
+    }
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(sprite)
+    sprites.destroy(otherSprite, effects.disintegrate, 500)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    scene.cameraShake(4, 500)
+    mySprite.startEffect(effects.fire, 1000)
+    pause(1000)
 })
 let projectile: Sprite = null
 let monster1: Sprite = null
@@ -161,14 +330,22 @@ scene.setBackgroundImage(img`
     `)
 tiles.loadMap(tiles.createSmallMap(tilemap`level12`))
 mySprite = sprites.create(img`
-    . . 2 2 2 c . . 
-    . 2 2 2 2 7 c . 
-    . 2 2 1 7 7 6 . 
-    4 4 e 2 2 f c . 
-    4 6 1 1 1 6 e . 
-    . 6 6 6 6 b . e 
-    . . e e e e . . 
-    . . 2 . . c . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . f f e e e e f 2 f . . . 
+    . . . f f e e e e f 2 2 2 f . . 
+    . . . f e e e f f e e e e f . . 
+    . . . f f f f e e 2 2 2 2 e f . 
+    . . . f e 2 2 2 f f f f e 2 f . 
+    . . f f f f f f f e e e f f f . 
+    . . f f e 4 4 e b f 4 4 e e f . 
+    . . f e e 4 d 4 1 f d d e f . . 
+    . . . f e e e 4 d d d d f . . . 
+    . . . . f f e e 4 4 4 e f . . . 
+    . . . . . 4 d d e 2 2 2 f . . . 
+    . . . . . e d d e 2 2 2 f . . . 
+    . . . . . f e e f 4 5 5 f . . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . . . . f f f . . . . . . 
     `, SpriteKind.Player)
 tiles.placeOnRandomTile(mySprite, assets.tile`myTile10`)
 profilelife.setMaxLife(10)
@@ -200,23 +377,39 @@ controller.moveSprite(mySprite, 100, 0)
 characterAnimations.loopFrames(
 mySprite,
 [img`
-    . . 2 2 2 c . . 
-    . 2 2 2 2 7 c . 
-    . 2 2 1 7 7 6 . 
-    4 4 e 2 2 f c . 
-    4 6 1 1 1 6 e . 
-    . 6 6 6 6 b . e 
-    . . e e e e . . 
-    . . 2 . . c . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . f f e e e e f 2 f . . . 
+    . . . f f e e e e f 2 2 2 f . . 
+    . . . f e e e f f e e e e f . . 
+    . . . f f f f e e 2 2 2 2 e f . 
+    . . . f e 2 2 2 f f f f e 2 f . 
+    . . f f f f f f f e e e f f f . 
+    . . f f e 4 4 e b f 4 4 e e f . 
+    . . f e e 4 d 4 1 f d d e f . . 
+    . . . f e e e 4 d d d d f . . . 
+    . . . . f f e e 4 4 4 e f . . . 
+    . . . . . 4 d d e 2 2 2 f . . . 
+    . . . . . e d d e 2 2 2 f . . . 
+    . . . . . f e e f 4 5 5 f . . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . . . . f f f . . . . . . 
     `,img`
-    . . . . . . . . 
-    . . 2 2 2 c . . 
-    . 2 2 2 2 7 c . 
-    . 2 2 1 7 7 6 . 
-    4 4 e 2 2 f c . 
-    4 6 1 1 1 6 e . 
-    . 6 6 6 6 b . e 
-    . . 2 . . c . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . f f e e e e f 2 f . . . 
+    . . . f f e e e e f 2 2 2 f . . 
+    . . . f e e e f f e e e e f . . 
+    . . . f f f f e e 2 2 2 2 e f . 
+    . . . f e 2 2 2 f f f f e 2 f . 
+    . . f f f f f f f e e e f f f . 
+    . . f f e 4 4 e b f 4 4 e e f . 
+    . . f e e 4 d 4 1 f d d e f . . 
+    . . . f e e e 4 d d d d f . . . 
+    . . . . f f e e 4 4 4 e f . . . 
+    . . . . . 4 d d e 2 2 2 f . . . 
+    . . . . . e d d e 2 2 2 f . . . 
+    . . . . . f e e f 4 5 5 f . . . 
+    . . . . . . . f f f . . . . . . 
     `],
 500,
 characterAnimations.rule(Predicate.NotMoving, Predicate.FacingRight, Predicate.HittingWallDown)
@@ -224,23 +417,39 @@ characterAnimations.rule(Predicate.NotMoving, Predicate.FacingRight, Predicate.H
 characterAnimations.loopFrames(
 mySprite,
 [img`
-    . . c 2 2 2 . . 
-    . c 7 2 2 2 2 . 
-    . 6 7 7 1 2 2 . 
-    . c f 2 2 e 4 4 
-    . e 6 1 1 1 6 4 
-    e . b 6 6 6 6 . 
-    . . e e e e . . 
-    . . c . . 2 . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d d 4 e e e f . . . 
+    . . . f e 4 4 4 e e f f . . . . 
+    . . . f 2 2 2 e d d 4 . . . . . 
+    . . . f 2 2 2 e d d e . . . . . 
+    . . . f 5 5 4 f e e f . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . . . . f f f . . . . . . . 
     `,img`
-    . . . . . . . . 
-    . . c 2 2 2 . . 
-    . c 7 2 2 2 2 . 
-    . 6 7 7 1 2 2 . 
-    . c f 2 2 e 4 4 
-    . e 6 1 1 1 6 4 
-    e . b 6 6 6 6 . 
-    . . c . . 2 . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d d 4 e e e f . . . 
+    . . . f e 4 4 4 e e f f . . . . 
+    . . . f 2 2 2 e d d 4 . . . . . 
+    . . . f 2 2 2 e d d e . . . . . 
+    . . . f 5 5 4 f e e f . . . . . 
+    . . . . . . f f f . . . . . . . 
     `],
 500,
 characterAnimations.rule(Predicate.NotMoving, Predicate.FacingLeft, Predicate.HittingWallDown)
@@ -248,32 +457,73 @@ characterAnimations.rule(Predicate.NotMoving, Predicate.FacingLeft, Predicate.Hi
 characterAnimations.loopFrames(
 mySprite,
 [img`
-    . . 2 2 2 c . . 
-    . 2 2 2 2 7 c . 
-    . 2 2 1 7 7 6 . 
-    4 4 e 2 2 f c . 
-    4 6 1 1 1 6 e . 
-    . 6 6 6 6 b . e 
-    . . e e e e . . 
-    . . 2 . . c . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . f f e e e e f 2 f . . . 
+    . . . f f e e e e f 2 2 2 f . . 
+    . . . f e e e f f e e e e f . . 
+    . . . f f f f e e 2 2 2 2 e f . 
+    . . . f e 2 2 2 f f f f e 2 f . 
+    . . f f f f f f f e e e f f f . 
+    . . f f e 4 4 e b f 4 4 e e f . 
+    . . f e e 4 d 4 1 f d d e f . . 
+    . . . f e e e 4 d d d d f . . . 
+    . . . . f f e e 4 4 4 e f . . . 
+    . . . . . 4 d d e 2 2 2 f . . . 
+    . . . . . e d d e 2 2 2 f . . . 
+    . . . . . f e e f 4 5 5 f . . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . . . . f f f . . . . . . 
     `,img`
-    . . . . . . . . 
-    . . 2 2 2 c . . 
-    . 2 2 2 2 7 c . 
-    . 2 2 1 7 7 6 . 
-    4 4 e 2 2 f c . 
-    4 6 1 1 1 6 e . 
-    . 6 6 6 6 b . e 
-    . . . 2 c . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . f f e e e e f 2 f . . . 
+    . . . f f e e e e f 2 2 2 f . . 
+    . . . f e e e f f e e e e f . . 
+    . . . f f f f e e 2 2 2 2 e f . 
+    . . . f e 2 2 2 f f f f e 2 f . 
+    . . f f f f f f f e e e f f f . 
+    . . f f e 4 4 e b f 4 4 e e f . 
+    . . f e e 4 d 4 1 f d d e f . . 
+    . . . f e e e e e d d d f . . . 
+    . . . . . f 4 d d e 4 e f . . . 
+    . . . . . f e d d e 2 2 f . . . 
+    . . . . f f f e e f 5 5 f f . . 
+    . . . . f f f f f f f f f f . . 
+    . . . . . f f . . . f f f . . . 
     `,img`
-    . . 2 2 2 c . . 
-    . 2 2 2 2 7 c . 
-    . 2 2 1 7 7 6 . 
-    4 4 e 2 2 f c . 
-    4 6 1 1 1 6 e . 
-    . 6 6 6 6 b . e 
-    . . e e e e . . 
-    . . c . . 2 . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . f f e e e e f 2 f . . . 
+    . . . f f e e e e f 2 2 2 f . . 
+    . . . f e e e f f e e e e f . . 
+    . . . f f f f e e 2 2 2 2 e f . 
+    . . . f e 2 2 2 f f f f e 2 f . 
+    . . f f f f f f f e e e f f f . 
+    . . f f e 4 4 e b f 4 4 e e f . 
+    . . f e e 4 d 4 1 f d d e f . . 
+    . . . f e e e 4 d d d d f . . . 
+    . . . . f f e e 4 4 4 e f . . . 
+    . . . . . 4 d d e 2 2 2 f . . . 
+    . . . . . e d d e 2 2 2 f . . . 
+    . . . . . f e e f 4 5 5 f . . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . . . . f f f . . . . . . 
+    `,img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . f f e e e e f 2 f . . . 
+    . . . f f e e e e f 2 2 2 f . . 
+    . . . f e e e f f e e e e f . . 
+    . . . f f f f e e 2 2 2 2 e f . 
+    . . . f e 2 2 2 f f f f e 2 f . 
+    . . f f f f f f f e e e f f f . 
+    . . f f e 4 4 e b f 4 4 e e f . 
+    . . f e e 4 d 4 1 f d d e f . . 
+    . . . f e e e 4 d d d d f . . . 
+    . . . . 4 d d e 4 4 4 e f . . . 
+    . . . . e d d e 2 2 2 2 f . . . 
+    . . . . f e e f 4 4 5 5 f f . . 
+    . . . . f f f f f f f f f f . . 
+    . . . . . f f . . . f f f . . . 
     `],
 100,
 characterAnimations.rule(Predicate.MovingRight, Predicate.HittingWallDown)
@@ -281,32 +531,73 @@ characterAnimations.rule(Predicate.MovingRight, Predicate.HittingWallDown)
 characterAnimations.loopFrames(
 mySprite,
 [img`
-    . . c 2 2 2 . . 
-    . c 7 2 2 2 2 . 
-    . 6 7 7 1 2 2 . 
-    . c f 2 2 e 4 4 
-    . e 6 1 1 1 6 4 
-    e . b 6 6 6 6 . 
-    . . e e e e . . 
-    . . c . . 2 . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d d 4 e e e f . . . 
+    . . . f e 4 4 4 e e f f . . . . 
+    . . . f 2 2 2 e d d 4 . . . . . 
+    . . . f 2 2 2 e d d e . . . . . 
+    . . . f 5 5 4 f e e f . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . . . . f f f . . . . . . . 
     `,img`
-    . . . . . . . . 
-    . . c 2 2 2 . . 
-    . c 7 2 2 2 2 . 
-    . 6 7 7 1 2 2 . 
-    . c f 2 2 e 4 4 
-    . e 6 1 1 1 6 4 
-    e . b 6 6 6 6 . 
-    . . . c 2 . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d e e e e e f . . . 
+    . . . f e 4 e d d 4 f . . . . . 
+    . . . f 2 2 e d d e f . . . . . 
+    . . f f 5 5 f e e f f f . . . . 
+    . . f f f f f f f f f f . . . . 
+    . . . f f f . . . f f . . . . . 
     `,img`
-    . . c 2 2 2 . . 
-    . c 7 2 2 2 2 . 
-    . 6 7 7 1 2 2 . 
-    . c f 2 2 e 4 4 
-    . e 6 1 1 1 6 4 
-    e . b 6 6 6 6 . 
-    . . e e e e . . 
-    . . 2 . . c . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d d 4 e e e f . . . 
+    . . . f e 4 4 4 e e f f . . . . 
+    . . . f 2 2 2 e d d 4 . . . . . 
+    . . . f 2 2 2 e d d e . . . . . 
+    . . . f 5 5 4 f e e f . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . . . . f f f . . . . . . . 
+    `,img`
+    . . . . . . . . . . . . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 d 4 e e f . . 
+    . . . f d d d d 4 e e e f . . . 
+    . . . f e 4 4 4 e d d 4 . . . . 
+    . . . f 2 2 2 2 e d d e . . . . 
+    . . f f 5 5 4 4 f e e f . . . . 
+    . . f f f f f f f f f f . . . . 
+    . . . f f f . . . f f . . . . . 
     `],
 100,
 characterAnimations.rule(Predicate.MovingLeft, Predicate.HittingWallDown)
@@ -314,41 +605,22 @@ characterAnimations.rule(Predicate.MovingLeft, Predicate.HittingWallDown)
 characterAnimations.loopFrames(
 mySprite,
 [img`
-    . . 2 2 2 2 . . 
-    . 2 7 7 4 4 2 . 
-    2 7 7 4 8 9 9 2 
-    2 7 4 8 8 e 9 2 
-    2 4 8 e e 9 9 2 
-    2 4 8 8 8 9 2 2 
-    . 2 2 9 9 2 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 9 9 9 2 2 . 
-    2 4 9 e 9 9 2 2 
-    2 4 8 8 e 8 9 2 
-    2 7 4 8 e 8 9 2 
-    2 7 7 4 8 8 2 2 
-    . 2 7 7 4 4 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 2 9 9 2 2 . 
-    2 2 9 8 8 8 4 2 
-    2 9 9 e e 8 4 2 
-    2 9 e 8 8 4 7 2 
-    2 9 9 8 4 7 7 2 
-    . 2 4 4 7 7 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 4 4 7 7 2 . 
-    2 2 8 8 4 7 7 2 
-    2 9 8 e 8 4 7 2 
-    2 9 8 e 8 8 4 2 
-    2 2 9 9 e 9 4 2 
-    . 2 2 9 9 9 2 . 
-    . . 2 2 2 2 . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 e e e e f . . 
+    . . . f d d d d e d d e f . . . 
+    . . . f e 4 4 4 e d d e . . . . 
+    . . . f 2 2 2 2 f e e f . . . . 
+    . . f f 5 5 4 4 f f f . . . . . 
+    . . f f f f f f f f f . . . . . 
+    . . . f f f . . . f f . . . . . 
     `],
 100,
 characterAnimations.rule(Predicate.MovingUp, Predicate.FacingLeft)
@@ -356,41 +628,22 @@ characterAnimations.rule(Predicate.MovingUp, Predicate.FacingLeft)
 characterAnimations.loopFrames(
 mySprite,
 [img`
-    . . 2 2 2 2 . . 
-    . 2 4 4 7 7 2 . 
-    2 9 9 8 4 7 7 2 
-    2 9 e 8 8 4 7 2 
-    2 9 9 e e 8 4 2 
-    2 2 9 8 8 8 4 2 
-    . 2 2 9 9 2 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 2 9 9 9 2 . 
-    2 2 9 9 e 9 4 2 
-    2 9 8 e 8 8 4 2 
-    2 9 8 e 8 4 7 2 
-    2 2 8 8 4 7 7 2 
-    . 2 4 4 7 7 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 2 9 9 2 2 . 
-    2 4 8 8 8 9 2 2 
-    2 4 8 e e 9 9 2 
-    2 7 4 8 8 e 9 2 
-    2 7 7 4 8 9 9 2 
-    . 2 7 7 4 4 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 7 7 4 4 2 . 
-    2 7 7 4 8 8 2 2 
-    2 7 4 8 e 8 9 2 
-    2 4 8 8 e 8 9 2 
-    2 4 9 e 9 9 2 2 
-    . 2 9 9 9 2 2 . 
-    . . 2 2 2 2 . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . f f e e e e f 2 f . . . 
+    . . . f f e e e e f 2 2 2 f . . 
+    . . . f e e e f f e e e e f . . 
+    . . . f f f f e e 2 2 2 2 e f . 
+    . . . f e 2 2 2 f f f f e 2 f . 
+    . . f f f f f f f e e e f f f . 
+    . . f f e 4 4 e b f 4 4 e e f . 
+    . . f e e e e 4 1 f d d e f . . 
+    . . . f e d d e d d d d f . . . 
+    . . . . e d d e 4 4 4 e f . . . 
+    . . . . f e e f 2 2 2 2 f . . . 
+    . . . . . f f f 4 4 5 5 f f . . 
+    . . . . . f f f f f f f f f . . 
+    . . . . . f f . . . f f f . . . 
     `],
 100,
 characterAnimations.rule(Predicate.MovingUp, Predicate.FacingRight)
@@ -398,41 +651,22 @@ characterAnimations.rule(Predicate.MovingUp, Predicate.FacingRight)
 characterAnimations.loopFrames(
 mySprite,
 [img`
-    . . 2 2 2 2 . . 
-    . 2 4 4 7 7 2 . 
-    2 9 9 8 4 7 7 2 
-    2 9 e 8 8 4 7 2 
-    2 9 9 e e 8 4 2 
-    2 2 9 8 8 8 4 2 
-    . 2 2 9 9 2 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 2 9 9 9 2 . 
-    2 2 9 9 e 9 4 2 
-    2 9 8 e 8 8 4 2 
-    2 9 8 e 8 4 7 2 
-    2 2 8 8 4 7 7 2 
-    . 2 4 4 7 7 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 2 9 9 2 2 . 
-    2 4 8 8 8 9 2 2 
-    2 4 8 e e 9 9 2 
-    2 7 4 8 8 e 9 2 
-    2 7 7 4 8 9 9 2 
-    . 2 7 7 4 4 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 7 7 4 4 2 . 
-    2 7 7 4 8 8 2 2 
-    2 7 4 8 e 8 9 2 
-    2 4 8 8 e 8 9 2 
-    2 4 9 e 9 9 2 2 
-    . 2 9 9 9 2 2 . 
-    . . 2 2 2 2 . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . f f f f f f . . . . 
+    . . . . f f e e e e f 2 f . . . 
+    . . . f f e e e e f 2 2 2 f . . 
+    . . . f e e e f f e e e e f . . 
+    . . . f f f f e e 2 2 2 2 e f . 
+    . . . f e 2 2 2 f f f f e 2 f . 
+    . . f f f f f f f e e e f f f . 
+    . . f f e 4 4 e b f 4 4 e e f . 
+    . . f e e e e 4 1 f d d e f . . 
+    . . . f e d d e d d d d f . . . 
+    . . . . e d d e 4 4 4 e f . . . 
+    . . . . f e e f 2 2 2 2 f . . . 
+    . . . . . f f f 4 4 5 5 f f . . 
+    . . . . . f f f f f f f f f . . 
+    . . . . . f f . . . f f f . . . 
     `],
 100,
 characterAnimations.rule(Predicate.MovingDown, Predicate.FacingRight)
@@ -440,74 +674,25 @@ characterAnimations.rule(Predicate.MovingDown, Predicate.FacingRight)
 characterAnimations.loopFrames(
 mySprite,
 [img`
-    . . 2 2 2 2 . . 
-    . 2 7 7 4 4 2 . 
-    2 7 7 4 8 9 9 2 
-    2 7 4 8 8 e 9 2 
-    2 4 8 e e 9 9 2 
-    2 4 8 8 8 9 2 2 
-    . 2 2 9 9 2 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 9 9 9 2 2 . 
-    2 4 9 e 9 9 2 2 
-    2 4 8 8 e 8 9 2 
-    2 7 4 8 e 8 9 2 
-    2 7 7 4 8 8 2 2 
-    . 2 7 7 4 4 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 2 9 9 2 2 . 
-    2 2 9 8 8 8 4 2 
-    2 9 9 e e 8 4 2 
-    2 9 e 8 8 4 7 2 
-    2 9 9 8 4 7 7 2 
-    . 2 4 4 7 7 2 . 
-    . . 2 2 2 2 . . 
-    `,img`
-    . . 2 2 2 2 . . 
-    . 2 4 4 7 7 2 . 
-    2 2 8 8 4 7 7 2 
-    2 9 8 e 8 4 7 2 
-    2 9 8 e 8 8 4 2 
-    2 2 9 9 e 9 4 2 
-    . 2 2 9 9 9 2 . 
-    . . 2 2 2 2 . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . f f f f f f . . . . . . 
+    . . . f 2 f e e e e f f . . . . 
+    . . f 2 2 2 f e e e e f f . . . 
+    . . f e e e e f f e e e f . . . 
+    . f e 2 2 2 2 e e f f f f . . . 
+    . f 2 e f f f f 2 2 2 e f . . . 
+    . f f f e e e f f f f f f f . . 
+    . f e e 4 4 f b e 4 4 e f f . . 
+    . . f e d d f 1 4 e e e e f . . 
+    . . . f d d d d e d d e f . . . 
+    . . . f e 4 4 4 e d d e . . . . 
+    . . . f 2 2 2 2 f e e f . . . . 
+    . . f f 5 5 4 4 f f f . . . . . 
+    . . f f f f f f f f f . . . . . 
+    . . . f f f . . . f f . . . . . 
     `],
 100,
 characterAnimations.rule(Predicate.MovingDown, Predicate.FacingLeft)
-)
-characterAnimations.loopFrames(
-mySprite,
-[img`
-    . . . 2 2 2 c . 
-    . . 2 2 2 2 7 c 
-    . . 2 2 1 7 7 6 
-    . 4 4 e 2 2 f c 
-    . 4 6 1 1 1 6 e 
-    . . 6 e e e e . 
-    . . . . . 2 c c 
-    . . . . . . 2 2 
-    `],
-100,
-characterAnimations.rule(Predicate.MovingDown, Predicate.HittingWallRight, Predicate.FacingRight)
-)
-characterAnimations.loopFrames(
-mySprite,
-[img`
-    . c 2 2 2 . . . 
-    c 7 2 2 2 2 . . 
-    6 7 7 1 2 2 . . 
-    c f 2 2 e 4 4 . 
-    e 6 1 1 1 6 4 . 
-    . e e e e 6 . . 
-    c c 2 . . . . . 
-    2 2 . . . . . . 
-    `],
-100,
-characterAnimations.rule(Predicate.MovingDown, Predicate.HittingWallLeft, Predicate.FacingLeft)
 )
 for (let value of tiles.getTilesByType(assets.tile`myTile7`)) {
     monster1 = sprites.create(img`
@@ -528,10 +713,13 @@ for (let value of tiles.getTilesByType(assets.tile`myTile7`)) {
 game.onUpdate(function () {
     for (let value of sprites.allOfKind(SpriteKind.Enemy)) {
         if (value.isHittingTile(CollisionDirection.Right)) {
-            value.vx = 30
+            value.vx = -30
             value.image.flipX()
         } else if (value.isHittingTile(CollisionDirection.Left)) {
-            value.vx = -30
+            value.vx = 30
+            value.image.flipX()
+        } else if (!(value.isHittingTile(CollisionDirection.Bottom))) {
+            value.vx = -1 * value.vx
             value.image.flipX()
         }
     }

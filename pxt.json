@@ -5,7 +5,8 @@
         "device": "*",
         "arcade-character-animations": "github:microsoft/arcade-character-animations#v0.0.2",
         "arcade-premium-life": "github:jwunderl/arcade-premium-life#v0.2.1",
-        "tilemaps": "github:microsoft/pxt-tilemaps#v1.12.0"
+        "tilemaps": "github:microsoft/pxt-tilemaps#v1.12.0",
+        "pxt-arcade-vector-math": "github:robo-technical-group/pxt-arcade-vector-math#v1.0.7"
     },
     "files": [
         "main.blocks",
